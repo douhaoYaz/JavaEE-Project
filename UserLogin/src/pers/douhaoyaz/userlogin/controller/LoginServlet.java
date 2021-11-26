@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
         // 3. 判断消息模型的状态码，根据其值决定跳转到哪个页面
         if(messageModel.getCode() == 1){
             // 将消息模型中的用户信息设置到session作用域中，重定向跳转到奥success.jsp
-            req.getSession().setAttribute("user", messageModel.getObject());
+            req.getSession().setAttribute("messageModel", messageModel);
             resp.sendRedirect("success.jsp");
         }
         else{
@@ -49,30 +49,5 @@ public class LoginServlet extends HttpServlet {
             req.getRequestDispatcher("failure.jsp").forward(req, resp);
         }
 
-
-//        // 判断账号或密码是否为空，然后输出错误提示
-//        if(uname == null || "".equals(uname.trim())){
-//            // 设置request域对象来传递数据，这里不用session域对象是因为实现传递提示数据的功能，request的范围已经够用了
-//            req.setAttribute("msg", "记得填账号哦");
-//            // 请求转发，将请求转发到failure.jsp，因为没填账号所以要用户在failure.jsp的界面重新填一次登录信息
-//            req.getRequestDispatcher("failure.jsp").forward(req, resp);
-//            return;
-//        }
-//        if(upwd == null || "".equals(upwd.trim())){
-//            // 设置request域对象来传递数据，这里不用session域对象是因为实现传递提示数据的功能，request的范围已经够用了
-//            req.setAttribute("msg", "记得填密码哦");
-//            // 请求转发，将请求转发到failure.jsp，因为没填密码所以要用户在failure.jsp的界面重新填一次登录信息
-//            req.getRequestDispatcher("failure.jsp").forward(req, resp);
-//            return;
-//        }
-
-
-//        // 登录成功的情况，目前先暂定账号和密码都为DearJane
-//        if("DearJane".equals(uname) && "DearJane".equals(upwd)){
-//            // 将登录信息设置到session域对象中，类似于某东某宝右上角的登录信息
-//            req.getSession().setAttribute("uname", uname);
-//            // 重定向，跳转到success.jsp登录成功页面
-//            resp.sendRedirect("success.jsp");
-//        }
     }
 }
