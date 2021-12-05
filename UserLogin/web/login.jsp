@@ -11,17 +11,18 @@
     <title>Login</title>
 </head>
 <body>
+    <%-- 当注册成功时显示注册成功信息 --%>
+    ${requestScope.regSuccess} <br>
     <%-- 通过表单提交登录数据到loginServlet --%>
     <form action="loginServlet" method="post">
-        姓名：<input type="text" name="uname"> <br>
-        密码：<input type="password" name="upwd"> <br>
+        账号名：<input type="text" name="uname"> <br>
+        密码  ：<input type="password" name="upwd"> <br>
         <button>登录</button>
-        <%-- 获取后台LoginServlet在request作用域中设置的数据，用于提示用户登录错误信息 --%>
-        <span style="color: red; font-size: 12px"><%=request.getAttribute("msg")%></span>
-        <%-- TODO 可将上面的span换成EL表达式 --%>
+<%--        &lt;%&ndash; 获取后台LoginServlet在request作用域中设置的数据，用于提示用户登录错误信息 &ndash;%&gt;--%>
+<%--        <span style="color: red; font-size: 12px"><%=request.getAttribute("msg")%></span>--%>
+
     </form>
 
-    <%-- TODO 跳转到注册页面register.jsp --%>
-
+    <a href="register.jsp">还没有账号？来注册叭</a>
 </body>
 </html>
