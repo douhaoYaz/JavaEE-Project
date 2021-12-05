@@ -13,5 +13,7 @@
 <body>
     <h1>我说你登录失败了，谁赞成，谁反对</h1>
     <h2>来自后台LoginServlet老哥的温馨提示：${messageModel.msg}</h2>
+
+    <a href="login.jsp">重新登录叭</a>
 </body>
 </html>
