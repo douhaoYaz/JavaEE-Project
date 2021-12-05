@@ -70,4 +70,66 @@ public class UserService {
 
         return messageModel;
     }
+
+    /**
+     * @description
+     *      1. 参数的非空判断
+     *      2. 密码的确认
+     *      3. 调用DAO层的注册register方法，根据注册成功或失败来设置messageModel对象并返回
+     * @param uname
+     * @param upwd
+     * @param upwd_confirm
+     * @return
+     */
+    public MessageModel userRegister(String uname, String upwd, String upwd_confirm) {
+
+        MessageModel messageModel = new MessageModel();
+
+        System.out.println("UserService:");
+        System.out.println("uname: " + uname);
+        System.out.println("upwd: " + upwd);
+        System.out.println("upwd_confirm: " + upwd_confirm);
+        System.out.println(String.format("INSERT INTO user (userName, userPwd) values('%s', '%s')", uname, upwd));
+
+        // 1. 参数的非空判断
+        if(uname == null || "".equals(uname.trim())){
+            // 将状态码、提示信息、回显数据设置到消息模型对象中，返回消息模型对象
+            messageModel.setCode(0);
+            messageModel.setMsg("记得填账号哦");
+            return messageModel;
+        }
+        if(upwd == null || "".equals(upwd.trim())){
+            // 将状态码、提示信息、回显数据设置到消息模型对象中，返回消息模型对象
+            messageModel.setCode(0);
+            messageModel.setMsg("记得填密码哦");
+            return messageModel;
+        }
+
+        // 2. 密码的确认
+        if(!upwd.equals(upwd_confirm)){
+            // 密码不一致
+            messageModel.setCode(0);
+            messageModel.setMsg("两次输入的密码不同哦");
+            return messageModel;
+        }
+
+        // 3. 调用DAO层的注册register方法，根据注册成功或失败来设置messageModel对象并返回
+        int flag = DAO.register(uname, upwd);
+        if (flag == 1){
+            messageModel.setCode(1);
+            messageModel.setMsg("注册成功");
+        }
+        else if (flag == 2){
+            // 数据库查询到已存在账号名和uname一样的数据
+            messageModel.setCode(0);
+            messageModel.setMsg("这个名字已经被别人起啦，你换一个叭");
+        }
+        else if (flag == 0){
+            // 数据库操作失败
+            messageModel.setCode(0);
+            messageModel.setMsg("数据库操作失败");
+        }
+
+        return  messageModel;
+    }
 }
