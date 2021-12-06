@@ -1,0 +1,48 @@
+body{
+    background-image: url("kotoba.png");
+    background-repeat: no-repeat;
+    background-size:100%;
+    background-position: 0px -50px;
+}
+
+#login-box{
+    background-color: #00000068;
+    border-radius: 13px;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 80px;
+    width: 350px;
+    height: 400px;
+}
+
+#login-box h1{
+    padding-top: 60px;
+    color: #ffffff;
+}
+
+#login-box h3{
+    padding-top: 30px;
+    color: #ffffff;
+}
+
+#login-box button{
+    font-size: large;
+    line-height:30px;
+    margin-top: 30px;
+    width: 130px;
+    height: 45px;
+    border-radius:13px ;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+    color: #FFFFFF;
+}
+
+#login-box button:hover{
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+}
+
+#login-box a{
+    text-decoration: none;
+    color: white;
+}
