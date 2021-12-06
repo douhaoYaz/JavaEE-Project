@@ -9,11 +9,15 @@
 <html>
 <head>
     <title>Success</title>
+    <link rel="stylesheet" type="text/css" href="success.css"/>
 </head>
 <body>
-    <h1>Success!</h1>
-<%--    <h2>啊是<%=session.getAttribute("uname")%>啊！</h2>--%>
-    <h2>啊是${messageModel.getObject().userName}啊！</h2>
-    <h2>${messageModel.msg}</h2>
+    <div id="login-box">
+            <h1>Success!</h1>
+            <div class="input-box">
+                <h3>啊是${messageModel.getObject().userName}啊！</h3>
+            </div>
+        <button>${messageModel.msg}</button>
+    </div>
 </body>
 </html>
